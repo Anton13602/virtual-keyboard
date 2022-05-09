@@ -93,7 +93,6 @@ class VirtualKeyboard {
   }
 
   addListener(event) {
-    // console.log(event)
     event.preventDefault();
     this.keys.forEach((key) => {
       if (key.getAttribute('keyname') === event.code) {
@@ -151,22 +150,27 @@ class VirtualKeyboard {
       if (element.getAttribute('keyname') === 'ShiftLeft' || element.getAttribute('keyname') === 'ShiftRight') {
         this.keyShift('removeShift');
       }
-    } else {
-      this.keyShift();
+    } else if (this.flagShif && this.flagCaps) {
+      console.log('fdsafdas')
+      this.keyShift('capsShift');
     }
   }
 
   keyShift(param) {
     const i = this.currentLang;
     this.keys.forEach((key, index) => {
-      if (!key.getAttribute('keyname').includes('CapsLock')
-      && !key.getAttribute('keyname').includes('Tab')
-      && !key.getAttribute('keyname').includes('Shif')
-      && !key.getAttribute('keyname').includes('Control')
-      && !key.getAttribute('keyname').includes('Alt')
-      && !key.getAttribute('keyname').includes('Backspace')
-      && !key.getAttribute('keyname').includes('Delete')
-      && !key.getAttribute('keyname').includes('Enter')) {
+      if (key.getAttribute('keyname').includes('Key')
+      || key.getAttribute('keyname').includes('Bracket')
+      || key.getAttribute('keyname').includes('Semicolon')
+      || key.getAttribute('keyname').includes('Quote')
+      || key.getAttribute('keyname').includes('Period')
+      || key.getAttribute('keyname').includes('Backquote')
+      || key.getAttribute('keyname').includes('Comma')
+      || key.getAttribute('keyname').includes('Digit')
+      || key.getAttribute('keyname').includes('Slash')
+      || key.getAttribute('keyname').includes('Minus')
+      || key.getAttribute('keyname').includes('Equal')
+      || key.getAttribute('keyname').includes('Backslash')) {
         const content = key;
         content.innerHTML = '';
         if (param === 'shift') {
