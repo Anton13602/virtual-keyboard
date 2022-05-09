@@ -151,7 +151,6 @@ class VirtualKeyboard {
         this.keyShift('removeShift');
       }
     } else if (this.flagShif && this.flagCaps) {
-      console.log('fdsafdas')
       this.keyShift('capsShift');
     }
   }
@@ -265,7 +264,6 @@ class VirtualKeyboard {
         }
       }
     };
-
     if (symbol === 'Enter') {
       inputCharacter('\n');
     } else if (symbol === 'Tab') {
